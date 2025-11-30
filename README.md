@@ -123,6 +123,16 @@ Exemple de réponse JSON :
 }
 ```
 
+## 🧪 Tests et Validation
+
+### Résultats des tests Kafka Streams
+
+| Test | Description | Résultat |
+|------|-------------|----------|
+| **Interface Web** | Dashboard de monitoring | ![Web Interface](documentation/images/PAGE_WEB_Test_STREAM.JPG) |
+| **Input Topic** | Envoi de messages vers input-topic | ![Input Test](documentation/images/T_Input.JPG) |
+| **Output Topic** | Réception des messages bruts | ![Output Test](documentation/images/T_output.JPG) |
+| **Word Count** | Résultats du comptage de mots | ![Word Count](documentation/images/T_output_Count.JPG) |
 ---
 
 ## 🔄 Flux de traitement Kafka
