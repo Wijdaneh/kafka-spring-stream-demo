@@ -1,167 +1,195 @@
-# ⚡ Kafka Spring Stream Demo
+Voici le README.md dans le format demandé :
 
-Une application complète en Spring Boot utilisant **Kafka Streams** pour le traitement de données en temps réel avec visualisation instantanée des résultats.
+```markdown
+# Kafka Spring Stream Demo
+
+Une application complète de traitement de données en temps réel avec Spring Boot et Kafka Streams.
 
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen)
 ![Kafka](https://img.shields.io/badge/Apache%20Kafka-3.7-red)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
----
+## Fonctionnalités
 
-## 🚀 Fonctionnalités
+- Traitement de flux de données en temps réel avec Kafka Streams
+- Comptage de mots (Word Count) en continu
+- API REST pour l'envoi et la réception de données
+- Interface web de monitoring temps réel
+- Architecture modulaire et extensible
+- Configuration Spring Boot optimisée
 
-- Streaming temps réel avec Kafka Streams
-- Word Count (exemple démo)
-- API REST de publication / lecture
-- Interface Web temps réel
-- Monitoring pipelines Kafka
-- Architecture modulaire
-- Service analytique en streaming
+## 🛠️ Technologies
 
----
-
-## 🛠️ Technologies utilisées
-
-- Java 17
-- Spring Boot 3
+- Spring Boot 3.2.0
 - Kafka Streams API
-- Apache Kafka
+- Apache Kafka 3.7
+- Java 17
 - Maven
-- WebSocket (optionnel)
-- Thymeleaf / React (selon UI)
+- Spring Web
+- Thymeleaf (Interface web)
 
----
-
+```
 ## 📁 Structure du Projet
 
+```
 src/main/java/com/example/demo/
-├── config/ # Config Kafka
-│ └── KafkaConfig.java
-├── controller/ # API REST
-│ └── StreamController.java
-├── service/ # Services Kafka Streams
-│ └── WordCountService.java
-├── model/ # Données échangées
-│ └── Message.java
-├── dto/ # Data Transfer Objects
-│ └── WordCountDto.java
-└── DemoApplication.java # Classe principale
+├── config/
+│   └── KafkaConfig.java               # Configuration Kafka
+├── controller/
+│   └── StreamController.java          # Endpoints REST
+├── service/
+│   └── WordCountService.java          # Service Kafka Streams
+├── model/
+│   └── Message.java                   # Modèle de données
+├── dto/
+│   └── WordCountDto.java              # DTO de transfert
+└── DemoApplication.java               # Classe principale
+```
 
-yaml
-Copier le code
+## 🏃‍♂️ Installation et Exécution
 
----
-
-## 🏃 Installation et exécution
-
-### 🧩 Prérequis
+### Prérequis
 - Java 17+
-- Maven
-- Apache Kafka installé
+- Maven 3.6+
+- Apache Kafka
 
----
-
-### 1️⃣ Cloner le projet
-
+### 1. Cloner le projet
 ```bash
 git clone https://github.com/Wijdaneh/kafka-spring-stream-demo.git
 cd kafka-spring-stream-demo
-2️⃣ Démarrer Kafka
-bash
-Copier le code
+```
+
+### 2. Démarrer Kafka
+```bash
 # Démarrer Zookeeper
 bin/zookeeper-server-start.sh config/zookeeper.properties
 
 # Démarrer Kafka
 bin/kafka-server-start.sh config/server.properties
-Créer les topics si nécessaire :
+```
 
-bash
-Copier le code
-bin/kafka-topics.sh --create --topic input-topic --bootstrap-server localhost:9092
-bin/kafka-topics.sh --create --topic output-topic --bootstrap-server localhost:9092
-3️⃣ Lancer l'application
-bash
-Copier le code
+### 3. Créer les topics Kafka
+```bash
+bin/kafka-topics.sh --create --topic input-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+bin/kafka-topics.sh --create --topic output-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+```
+
+### 4. Lancer l'application
+```bash
 mvn clean spring-boot:run
-Application accessible sur :
-http://localhost:8080
+```
 
-🔧 Utilisation
-1. Envoyer un message au flux
-bash
-Copier le code
-curl -X POST "http://localhost:8080/api/publish" \
-     -H "Content-Type: application/json" \
-     -d '{"message": "hello world from streaming app"}'
-2. Récupérer les résultats du streaming
-bash
-Copier le code
-curl -X GET "http://localhost:8080/api/results"
-Réponse JSON :
+Application disponible sur :
+[http://localhost:8080](http://localhost:8080)
 
-json
-Copier le code
+---
+
+## 🔑 Utilisation
+
+### 1. Envoyer des données au stream
+```bash
+curl -X POST http://localhost:8080/api/publish \
+  -H "Content-Type: application/json" \
+  -d '{"message": "hello world kafka streams"}'
+```
+
+### 2. Récupérer les résultats du traitement
+```bash
+curl -X GET http://localhost:8080/api/results
+```
+
+Réponse :
+```json
 {
   "hello": 1,
   "world": 1,
-  "streaming": 1,
-  "app": 1
+  "kafka": 1,
+  "streams": 1
 }
-🔄 Flux de traitement Kafka
-markdown
-Copier le code
-1. Client → POST /publish (message)
-2. Application → push dans input-topic
-3. Kafka Streams → word count
-4. Résultats envoyés vers output-topic
-5. Application → expose /results en REST ou WebSocket
-6. UI web → affichage en temps réel
-📊 Monitoring (optionnel)
-Outil	URL
-Kafka UI	http://localhost:8080/ui
-Kafka CLI	bin/kafka-console-consumer.sh
-Conduktor	externe
-ksqlDB	optionnel
+```
 
-🔬 Testing (PowerShell)
-powershell
-Copier le code
-# Écrire dans Kafka
-bin/kafka-console-producer.sh --topic input-topic --bootstrap-server localhost:9092
+---
 
-# Consommer
-bin/kafka-console-consumer.sh --topic output-topic --from-beginning --bootstrap-server localhost:9092
-🤝 Contribution
-Fork
+## 📊 Interface Web
 
-Branche feature/*
+Accédez à l'interface web sur `http://localhost:8080` pour :
 
-Commit + Push
+- Visualiser les données en temps réel
+- Envoyer des messages directement
+- Surveiller le traitement Kafka Streams
+- Voir les statistiques de traitement
 
-Pull Request
+---
 
-📝 Licence
+## 🔒 Architecture Kafka
+
+| Composant | Topic | Description |
+| --------- | ----- | ----------- |
+| Producer | input-topic | Réception des données brutes |
+| Stream Processor | - | Traitement Kafka Streams |
+| Consumer | output-topic | Résultats du traitement |
+
+---
+
+## 🔄 Flux de Traitement
+
+```
+1. Client → POST /api/publish (données)
+2. Application → Production vers input-topic
+3. Kafka Streams → Traitement et agrégation
+4. Application → Consommation depuis output-topic
+5. Client → GET /api/results (résultats)
+```
+
+---
+
+## 🧪 Testing (PowerShell)
+
+```powershell
+# Tester l'envoi de données
+$response = Invoke-RestMethod -Uri "http://localhost:8080/api/publish" -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"message": "test kafka streams processing"}'
+
+# Vérifier les résultats
+$results = Invoke-RestMethod -Uri "http://localhost:8080/api/results" -Method GET
+```
+
+---
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche feature
+3. Commit
+4. Push
+5. Pull Request
+
+---
+
+## 📝 Licence
+
 Ce projet est sous licence MIT.
 
-👨‍💻 Auteur
-Wijdane
-GitHub : https://github.com/Wijdaneh
+---
 
-🔮 Améliorations futures
-Pipeline multi-topique
+## 👨‍💻 Auteur
 
-Agrégations temporelles (windowing)
+Wijdane  
+GitHub: @Wijdaneh
 
-Détection d’événements anormaux
+---
 
-Notifications en temps réel
+## 🔮 Améliorations futures
 
-Intégration avec Redis/Elastic
+- Agrégations temporelles (tumbling windows)
+- Traitement de données JSON complexes
+- Intégration avec bases de données
+- Monitoring avancé avec Micrometer
+- Tests d'intégration Kafka
+- Déploiement Docker
+- Scaling horizontal des instances
 
-Dashboard en React live analytics
+---
 
-Exposition métriques Prometheus/Grafana
-
-⭐ Si ce projet vous aide, pensez à lui mettre une étoile sur GitHub 🙂
+⭐ N'oubliez pas de donner une étoile si ce projet vous a été utile !
+```
