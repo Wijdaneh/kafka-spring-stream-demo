@@ -1,6 +1,6 @@
-Parfait ! Voici un **README.md complet et bien formaté pour GitHub**, avec tous les blocs de code correctement indentés pour que GitHub conserve l’affichage, incluant badges, structure du projet, installation, utilisation, flux Kafka et contribution.
+Voici le README.md corrigé avec la syntaxe Markdown propre :
 
-````markdown
+```markdown
 # ⚡ Kafka Spring Stream Demo
 
 Une application complète en Spring Boot utilisant **Kafka Streams** pour le traitement de données en temps réel avec visualisation instantanée des résultats.
@@ -38,7 +38,7 @@ Une application complète en Spring Boot utilisant **Kafka Streams** pour le tra
 
 ## 📁 Structure du Projet
 
-```text
+```
 src/main/java/com/example/demo/
 ├── config/                 # Configuration Kafka
 │   └── KafkaConfig.java
@@ -51,7 +51,7 @@ src/main/java/com/example/demo/
 ├── dto/                    # Data Transfer Objects
 │   └── WordCountDto.java
 └── DemoApplication.java    # Classe principale
-````
+```
 
 ---
 
@@ -59,9 +59,9 @@ src/main/java/com/example/demo/
 
 ### Prérequis
 
-* Java 17+
-* Maven
-* Apache Kafka installé
+- Java 17+
+- Maven
+- Apache Kafka installé
 
 ### 1️⃣ Cloner le projet
 
@@ -80,7 +80,7 @@ bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
 ```
 
-Créer les topics nécessaires :
+Créer les topics :
 
 ```bash
 bin/kafka-topics.sh --create --topic input-topic --bootstrap-server localhost:9092
@@ -93,7 +93,8 @@ bin/kafka-topics.sh --create --topic output-topic --bootstrap-server localhost:9
 mvn clean spring-boot:run
 ```
 
-L'application est accessible sur : [http://localhost:8080](http://localhost:8080)
+Application accessible sur :
+[http://localhost:8080](http://localhost:8080)
 
 ---
 
@@ -126,9 +127,22 @@ Exemple de réponse JSON :
 
 ---
 
+## 🧪 Tests et Validation
+
+### Résultats des tests Kafka Streams
+
+| Test | Description | Résultat |
+|------|-------------|----------|
+| **Interface Web** | Dashboard de monitoring | ![Web Interface](documentation/images/PAGE_WEB_Test_STREAM.JPG) |
+| **Input Topic** | Envoi de messages vers input-topic | ![Input Test](documentation/images/T_Input.JPG) |
+| **Output Topic** | Réception des messages bruts | ![Output Test](documentation/images/T_output.JPG) |
+| **Word Count** | Résultats du comptage de mots | ![Word Count](documentation/images/T_output_Count.JPG) |
+
+---
+
 ## 🔄 Flux de traitement Kafka
 
-```text
+```
 1. Client → POST /publish (message)
 2. Application → push dans input-topic
 3. Kafka Streams → Word Count
@@ -141,19 +155,19 @@ Exemple de réponse JSON :
 
 ## 📊 Monitoring (optionnel)
 
-| Outil     | URL / Commande                                       |
-| --------- | ---------------------------------------------------- |
-| Kafka UI  | [http://localhost:8080/ui](http://localhost:8080/ui) |
-| Kafka CLI | `bin/kafka-console-consumer.sh`                      |
-| Conduktor | Application externe                                  |
-| ksqlDB    | Optionnel                                            |
+| Outil | URL / Commande |
+|-------|----------------|
+| Kafka UI | [http://localhost:8080/ui](http://localhost:8080/ui) |
+| Kafka CLI | `bin/kafka-console-consumer.sh` |
+| Conduktor | Application externe |
+| ksqlDB | Optionnel |
 
 ---
 
 ## 🤝 Contribution
 
 1. **Fork** le projet
-2. Créer une branche **feature/***
+2. Créer une branche **feature/\***
 3. **Commit + Push**
 4. **Pull Request**
 
@@ -167,22 +181,30 @@ Ce projet est sous licence **MIT**.
 
 ## 👨‍💻 Auteur
 
-**Wijdane**
+**Wijdane**  
 GitHub : [https://github.com/Wijdaneh](https://github.com/Wijdaneh)
 
 ---
 
 ## 🔮 Améliorations futures
 
-* Pipeline multi-topic
-* Agrégations temporelles (windowing)
-* Détection d'événements anormaux
-* Notifications en temps réel
-* Intégration Redis / ElasticSearch
-* Dashboard React pour live analytics
-* Exposition métriques Prometheus + Grafana
+- Pipeline multi-topic
+- Agrégations temporelles (windowing)
+- Détection d'événements anormaux
+- Notifications en temps réel
+- Intégration Redis / ElasticSearch
+- Dashboard React pour live analytics
+- Exposition métriques Prometheus + Grafana
 
 ---
 
 ⭐ **Si ce projet vous aide, pensez à lui mettre une étoile sur GitHub !** 🙂
+```
 
+Maintenant exécutez ces commandes pour mettre à jour le README :
+
+```bash
+git add README.md
+git commit -m "docs: update README with proper markdown formatting and test images"
+git push origin main
+```
