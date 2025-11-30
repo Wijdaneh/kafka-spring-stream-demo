@@ -1,4 +1,4 @@
-markdown
+
 # ⚡ Kafka Spring Stream Demo
 
 Une application complète en Spring Boot utilisant **Kafka Streams** pour le traitement de données en temps réel avec visualisation instantanée des résultats.
@@ -220,4 +220,3 @@ GitHub : [https://github.com/Wijdaneh](https://github.com/Wijdaneh)
 
 ⭐ Si ce projet vous aide, pensez à lui mettre une étoile sur GitHub 🙂
 
-```
