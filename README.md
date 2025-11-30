@@ -37,18 +37,41 @@ Une application complète en Spring Boot utilisant **Kafka Streams** pour le tra
 ## 📁 Structure du Projet
 
 ```text
-src/main/java/com/example/demo/
-├── config/                 # Configuration Kafka
-│   └── KafkaConfig.java
-├── controller/             # API REST
-│   └── StreamController.java
-├── service/                # Services Kafka Streams
-│   └── WordCountService.java
-├── model/                  # Modèles de données
-│   └── Message.java
-├── dto/                    # Data Transfer Objects
-│   └── WordCountDto.java
-└── DemoApplication.java    # Classe principale
+kafka-spring-stream-demo/
+│
+├── src/main/java/com/example/kafka/
+│ ├── analytics/
+│ │ └── KafkaStreamsAnalytics.java # Service Kafka Streams
+│ ├── consumer/
+│ │ └── KafkaConsumerService.java # Service consommateur
+│ ├── controller/
+│ │ └── AnalyticsController.java # Contrôleur API REST
+│ ├── supplier/
+│ │ └── KafkaSupplierService.java # Service producteur
+│ ├── web/
+│ │ └── AnalyticsController.java # Contrôleur Web
+│ └── KafkaDemoApplication.java # Classe principale
+│
+├── src/main/resources/
+│ ├── static/
+│ │ └── index.html # Interface web
+│ ├── templates/
+│ │ └── dashboard.html # Template dashboard
+│ └── application.properties # Configuration
+│
+├── documentation/images/ # Captures d'écran de test
+│ ├── PAGE_WEB_Test_STREAM.JPG
+│ ├── T_Input.JPG
+│ ├── T_output.JPG
+│ └── T_output_Count.JPG
+│
+├── .vscode/
+│ └── settings.json # Configuration VS Code
+│
+├── pom.xml # Configuration Maven
+├── README.md # Documentation
+├── Licence # Licence MIT
+└── .gitignore # Fichiers ignorés par Git
 ````
 
 ---
