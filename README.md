@@ -1,4 +1,4 @@
-Voici le README.md corrigé avec la syntaxe Markdown propre :
+Voici le README.md complété et corrigé :
 
 ```markdown
 # ⚡ Kafka Spring Stream Demo
@@ -201,10 +201,13 @@ GitHub : [https://github.com/Wijdaneh](https://github.com/Wijdaneh)
 ⭐ **Si ce projet vous aide, pensez à lui mettre une étoile sur GitHub !** 🙂
 ```
 
-Maintenant exécutez ces commandes pour mettre à jour le README :
+Maintenant pour mettre à jour votre README.md :
 
 ```bash
+# Copiez le contenu ci-dessus dans votre fichier README.md
+
+# Puis exécutez :
 git add README.md
-git commit -m "docs: update README with proper markdown formatting and test images"
+git commit -m "docs: complete README with proper formatting and structure"
 git push origin main
 ```
